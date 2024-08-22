@@ -14,14 +14,33 @@ export default function Scene() {
     const ctx = canvas.current.getContext("2d");
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, dimension.width, dimension.height);
+    ctx.globalCompositeOperation = 'destination-out'
   };
 
-  console.log(dimension);
+  const manageMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    drawCircle(clientX, clientY, 50);
+  };
+
+  const drawCircle = (x, y, radius) => {
+    const ctx = canvas.current.getContext("2d");
+    ctx.beginPath();
+    ctx.fillStyle = "red";
+    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.fill();
+  };
 
   return (
     <div className="relative w-full h-full">
-      <div className='absolute w-full h-full bg-black'></div>
-      <canvas ref={canvas} height={dimension.height} width={dimension.width} />
+      {dimension.width == 0 && (
+        <div className="absolute w-full h-full bg-black"></div>
+      )}
+      <canvas
+        onMouseMove={manageMouseMove}
+        ref={canvas}
+        height={dimension.height}
+        width={dimension.width}
+      />
     </div>
   );
 }

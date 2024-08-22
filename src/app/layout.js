@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Paint Reveal",
-  description: "",
+  title: "Jacqueline Leone",
+  description: "Portfolio in progress",
 };
 
 export default function RootLayout({ children }) {

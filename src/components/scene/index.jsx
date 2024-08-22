@@ -20,6 +20,7 @@ export default function Scene() {
 
   return (
     <div className="relative w-full h-full">
+      <div className='absolute w-full h-full bg-black'></div>
       <canvas ref={canvas} height={dimension.height} width={dimension.width} />
     </div>
   );
